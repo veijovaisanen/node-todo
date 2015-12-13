@@ -17,7 +17,7 @@
   "devDependencies": {},
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/scotch-io/node-todo.git"
+    "url": "git+https://github.com/veijovaisanen/node-todo.git"
   },
   "license": "ISC",
   "bugs": {
@@ -25,3 +25,4 @@
   },
   "homepage": "https://github.com/scotch-io/node-todo#readme"
 }
+ 
