@@ -1,7 +1,7 @@
 // server.js
 
     // set up ========================
-	var port = process.env.PORT || 8080;
+	var port = process.env.PORT || 8081;
     var express  = require('express');
     var app      = express();                               // create our app w/ express
     var mongoose = require('mongoose');                     // mongoose for mongodb
@@ -11,8 +11,9 @@
 
     // configuration =================
 
-    mongoose.connect('mongodb://node:nodeuser@mongo.onmodulus.net:27017/uwO3mypu');     // connect to mongoDB database on modulus.io
-
+   // mongoose.connect('mongodb://node:nodeuser@mongo.onmodulus.net:27017/uwO3mypu');     // connect to mongoDB database on modulus.io
+    //mongoose.connect('mongodb://vvaisan:Miisu#Kiti@waffle.modulusmongo.net:27017/etiRyw3y');     // connect to mongoDB database on modulus.io
+	mongoose.connect('mongodb://localhost:27017/mean');
     app.use(express.static(__dirname + '/public'));                 // set the static files location /public/img will be /img for users
     app.use(morgan('dev'));                                         // log every request to the console
     app.use(bodyParser.urlencoded({'extended':'true'}));            // parse application/x-www-form-urlencoded
@@ -24,7 +25,7 @@
         text : String
     });
 	app.get('/api/todos', function(req, res) {
-
+	
         // use mongoose to get all todos in the database
         Todo.find(function(err, todos) {
 
