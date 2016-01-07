@@ -11,6 +11,7 @@ angular.module('todoController', [])
 		Todos.get()
 			.success(function(data) {
 				$scope.todos = data;
+				console.log(data.length);
 				$scope.loading = false;
 			});
 
