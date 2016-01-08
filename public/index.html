@@ -43,7 +43,7 @@
 
 				<!-- LOOP OVER THE TODOS IN $scope.todos -->
 				<div class="checkbox" ng-repeat="todo in todos">
-					<input type="checkbox" id="completed" class="checkbox"><span style="color:red"> Task completed?</span>
+					<input type="checkbox" id="completed" class="checkbox" ng-click="updateTodo(todo._id)"><span style="color:red"> Task completed?</span>
 					<span style="color:blue"> {{ todo.text }} / {{ todo.note }} {{ todo.updated_at | date:'medium' }} </span><span style="color:green">  {{todo.completed === false ? "Open" : "Closed"}}  </span>
  					<label>
 						<input type="checkbox" ng-click="deleteTodo(todo._id)" id='checkbox-1' class='tags-checkbox sr-only'/>

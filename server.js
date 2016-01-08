@@ -68,6 +68,25 @@
 
     });
 
+	// update a todo (completed)
+    app.put('/api/todos/:todo_id', function(req, res) {
+		console.log("Server");
+		Todo.update({_id: req.params.todo_id}, {
+        completed: true
+		} , function(err, todo) {
+            if (err)
+                res.send(err);
+
+            // get and return all the todos after you create another
+            Todo.find(function(err, todos) {
+                if (err)
+                    res.send(err)
+                res.json(todos);
+            });
+        });
+
+    });
+
     // delete a todo
     app.delete('/api/todos/:todo_id', function(req, res) {
         Todo.remove({
