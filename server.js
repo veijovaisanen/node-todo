@@ -70,8 +70,7 @@
 
 	// update a todo (completed)
     app.put('/api/todos/:todo_id', function(req, res) {
-		console.log("Server");
-		Todo.update({_id: req.params.todo_id}, {
+ 		Todo.update({_id: req.params.todo_id}, {
         completed: true
 		} , function(err, todo) {
             if (err)

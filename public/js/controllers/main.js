@@ -37,8 +37,7 @@ angular.module('todoController', [])
 		$scope.updateTodo = function(id) {
 
  				$scope.loading = true;
-				console.log("update");
-   				// call the create function from our service (returns a promise object)
+    				// call the create function from our service (returns a promise object)
 				Todos.update(id)
 
 					// if successful creation, call our get function to get all the new todos
