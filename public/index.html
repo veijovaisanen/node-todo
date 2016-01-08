@@ -33,22 +33,26 @@
 
 		<!-- HEADER AND TODO COUNT -->
 		<div class="jumbotron text-center">
-			<h1>I'm a Todo-aholic <span class="label label-info">{{ todos.length }}</span></h1>
+			<h2>Task Management Tool  </h2>
+			<h3>Tasks at the moment: <span class="label label-info">	{{ todos.length }}</span></h3>
 		</div>
 
 		<!-- TODO LIST -->
 		<div id="todo-list" class="row">
-			<div class="col-sm-4 col-sm-offset-4">
-
-				
+			<div class="col-sm-8 col-sm-offset-4">
 
 				<!-- LOOP OVER THE TODOS IN $scope.todos -->
 				<div class="checkbox" ng-repeat="todo in todos">
-					<label>
-						<input type="checkbox" ng-click="deleteTodo(todo._id)"> {{ todo.text }}
-					</label>
+					<input type="checkbox" id="completed" class="checkbox"><span style="color:red"> Task completed?</span>
+					<span style="color:blue"> {{ todo.text }} / {{ todo.note }} {{ todo.updated_at | date:'medium' }} </span><span style="color:green">  {{todo.completed === false ? "Open" : "Closed"}}  </span>
+ 					<label>
+						<input type="checkbox" ng-click="deleteTodo(todo._id)" id='checkbox-1' class='tags-checkbox sr-only'/>
+						<label for='checkbox-1'>
+						<i class='glyphicon glyphicon-remove-circle' style="color:red"></i>
+ 						<span class='label-content'></span>
+						</label>  
+  					</label>
 				</div>
-
 				<p class="text-center" ng-show="loading">
 					<span class="fa fa-spinner fa-spin fa-3x"></span>
 				</p>
@@ -58,25 +62,25 @@
 
 		<!-- FORM TO CREATE TODOS -->
 		<div id="todo-form" class="row">
-			<div class="col-sm-8 col-sm-offset-2 text-center">
+			<div class="col-sm-4 col-sm-offset-4">
 				<form>
 					<div class="form-group">
 
 						<!-- BIND THIS VALUE TO formData.text IN ANGULAR -->
-						<input type="text" class="form-control input-lg text-center" placeholder="I want to buy a puppy that will love me forever" ng-model="formData.text">
-					</div>
-
+ 						<input type="text" class="form-control" placeholder="Name" ng-model="formData.text">
+						<div class="checkbox">
+ 						</div>							
+  						<textarea rows="3" class="form-control" placeholder="Desc here" ng-model="formData.note">Desc here</textarea>
+ 					</div>
+	
 					<!-- createToDo() WILL CREATE NEW TODOS -->
 					<button type="submit" class="btn btn-primary btn-lg" ng-click="createTodo()">Add</button>
 				</form>
 			</div>
+			</div>
 		</div>
 
-		<div class="text-center text-muted">
-			<p>A demo by <a href="http://scotch.io">Scotch</a>.</p>
-			<p>Read the <a href="http://scotch.io/tutorials/javascript/creating-a-single-page-todo-app-with-node-and-angular">tutorial</a>.</p>
-		</div>
-
+ 
 	</div>
 
 </body>

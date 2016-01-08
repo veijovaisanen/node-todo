@@ -14,8 +14,8 @@
 
    // mongoose.connect('mongodb://node:nodeuser@mongo.onmodulus.net:27017/uwO3mypu');     // connect to mongoDB database on modulus.io
     //mongoose.connect('mongodb://vvaisan:Miisu#Kiti@waffle.modulusmongo.net:27017/etiRyw3y');     // connect to mongoDB database on modulus.io
-	//mongoose.connect('mongodb://localhost:27017/mean');
-	mongoose.connect('mongodb://vvaisan:Miisu#Kiti@waffle.modulusmongo.net:27017/etiRyw3y');
+	mongoose.connect('mongodb://localhost:27017/mean');
+	//mongoose.connect('mongodb://vvaisan:Miisu#Kiti@waffle.modulusmongo.net:27017/etiRyw3y');
      app.use(express.static(__dirname + '/public'));                 // set the static files location /public/img will be /img for users
     app.use(morgan('dev'));                                         // log every request to the console
     app.use(bodyParser.urlencoded({'extended':'true'}));            // parse application/x-www-form-urlencoded
@@ -25,12 +25,17 @@
 	app.use(require('browser-logger')()); //Added 7.1.2016, Also %npm install browser-logger
 
 	var Todo = mongoose.model('Todo', {
-        text : String
+        text : String,
+		completed:{
+			type: Boolean,
+  		    default: false 
+		},
+		note: String,
+		updated_at:  {type: Date, default:Date.now }
     });
 	app.get('/api/todos', function(req, res) {
 	
         // use mongoose to get all todos in the database
-		 console.log("Hello world");
         Todo.find(function(err, todos) {
 
             // if there is an error retrieving, send the error. nothing after res.send(err) will execute
@@ -45,10 +50,10 @@
     app.post('/api/todos', function(req, res) {
 
         // create a todo, information comes from AJAX request from Angular
-		
-        Todo.create({
+         Todo.create({
             text : req.body.text,
-            done : false
+			completed: req.body.completed,
+            note : req.body.note
         }, function(err, todo) {
             if (err)
                 res.send(err);

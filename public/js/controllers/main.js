@@ -4,16 +4,14 @@ angular.module('todoController', [])
 	.controller('mainController', ['$scope','$http','Todos', function($scope, $http, Todos) {
 		$scope.formData = {};
 		$scope.loading = true;
-
-		// GET =====================================================================
+  		// GET =====================================================================
 		// when landing on the page, get all todos and show them
 		// use the service to get all the todos
 		Todos.get()
 			.success(function(data) {
 				$scope.todos = data;
-				console.log(data.length);
-				$scope.loading = false;
-			});
+  				$scope.loading = false;
+ 			});
 
 		// CREATE ==================================================================
 		// when submitting the add form, send the text to the node API
@@ -23,8 +21,8 @@ angular.module('todoController', [])
 			// if form is empty, nothing will happen
 			if ($scope.formData.text != undefined) {
 				$scope.loading = true;
-
-				// call the create function from our service (returns a promise object)
+ 				if($scope.formData.completed == null) $scope.formData.completed = false;
+  				// call the create function from our service (returns a promise object)
 				Todos.create($scope.formData)
 
 					// if successful creation, call our get function to get all the new todos
