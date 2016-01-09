@@ -20,7 +20,7 @@
     app.use(bodyParser.json());                                     // parse application/json
     app.use(bodyParser.json({ type: 'application/vnd.api+json' })); // parse application/vnd.api+json as json
     app.use(methodOverride());
-	app.use(require('browser-logger')()); //Added 7.1.2016, Also %npm install browser-logger
+	//app.use(require('browser-logger')()); //Added 7.1.2016, Also %npm install browser-logger
 
 	var Todo = mongoose.model('Todo', {
         text : String,
