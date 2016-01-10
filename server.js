@@ -1,10 +1,10 @@
-// server.js comment
+// server.js  
 
     // set up ========================
 	var port = process.env.PORT || 8081;
 	require('console');
     var express  = require('express');
-    var app      = express();                               // create our app w/ express
+    var app      = express();                               // create our app express
     var mongoose = require('mongoose');                     // mongoose for mongodb
     var morgan = require('morgan');             // log requests to the console (express4)
     var bodyParser = require('body-parser');    // pull information from HTML POST (express4)
@@ -12,8 +12,8 @@
 
     // configuration =================
 
-  	//mongoose.connect('mongodb://localhost:27017/mean');
-	mongoose.connect('mongodb://vvaisan:Miisu#Kiti@waffle.modulusmongo.net:27017/etiRyw3y');
+  	//mongoose.connect('mongodb://localhost:27017/mean'); //Local dB
+	mongoose.connect('mongodb://vvaisan:Miisu#Kiti@waffle.modulusmongo.net:27017/etiRyw3y'); //Remote dB
     app.use(express.static(__dirname + '/public'));                 // set the static files location /public/img will be /img for users
     app.use(morgan('dev'));                                         // log every request to the console
     app.use(bodyParser.urlencoded({'extended':'true'}));            // parse application/x-www-form-urlencoded
@@ -108,4 +108,4 @@
 	 
     // listen (start app with node server.js) ======================================
     app.listen(port);
-    console.log("App listening on port 8081");
+    console.log("App listening on port" + port);

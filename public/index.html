@@ -31,7 +31,7 @@
 <body ng-controller="mainController">
 	<div class="container">
 
-		<!-- HEADER AND TODO COUNT -->
+	<!-- HEADER AND TODO COUNT -->
 		<div class="jumbotron text-center">
 			<h2>Task Management Tool  </h2>
 			<h3>Tasks at the moment: <span class="label label-info">	{{ todos.length }}</span></h3>
@@ -56,7 +56,6 @@
 				<p class="text-center" ng-show="loading">
 					<span class="fa fa-spinner fa-spin fa-3x"></span>
 				</p>
-
 			</div>
 		</div>
 
@@ -70,6 +69,7 @@
  						<input type="text" class="form-control" placeholder="Name" ng-model="formData.text">
 						<div class="checkbox">
  						</div>							
+						<!-- BIND THIS VALUE TO formData.note IN ANGULAR -->
   						<textarea rows="3" class="form-control" placeholder="Desc here" ng-model="formData.note">Desc here</textarea>
  					</div>
 	
@@ -79,8 +79,5 @@
 			</div>
 			</div>
 		</div>
-
-  
-
 </body>
 </html>
